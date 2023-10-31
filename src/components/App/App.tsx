@@ -13,8 +13,8 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
-      <Posts />
+      <Header categories={categoriesData} />
+      <Posts posts={postsData} />
       <Footer />
     </div>
   );
