@@ -6,9 +6,19 @@ type HeaderProps = {
     name: string;
     slug: string;
   }[];
+  zenModeStatus: boolean;
+  setZenMode: (status: boolean) => void;
 };
 
-function Header({ categories }: HeaderProps) {
+function Header({ categories, zenModeStatus, setZenMode }: HeaderProps) {
+  const handleZenMoode = () => {
+    if (zenModeStatus) {
+      setZenMode(false);
+    } else {
+      setZenMode(true);
+    }
+  };
+
   return (
     <header className="menu" id="header">
       <nav className="menu-nav">
@@ -20,8 +30,8 @@ function Header({ categories }: HeaderProps) {
             {category.name}
           </a>
         ))}
-        <button className="menu-btn" type="button">
-          Activer le mode zen
+        <button className="menu-btn" type="button" onClick={handleZenMoode}>
+          {zenModeStatus ? 'Désactiver' : 'Activer'} le mode zen
         </button>
       </nav>
     </header>

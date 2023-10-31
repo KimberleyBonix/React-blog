@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Posts from '../Posts/Posts';
@@ -8,13 +9,16 @@ import categoriesData from '../../data/categories';
 import postsData from '../../data/posts';
 
 function App() {
-  console.log(categoriesData);
-  console.log(postsData);
+  const [zenMode, setZenMode] = useState<boolean>(false);
 
   return (
     <div className="app">
-      <Header categories={categoriesData} />
-      <Posts posts={postsData} />
+      <Header
+        categories={categoriesData}
+        setZenMode={setZenMode}
+        zenModeStatus={zenMode}
+      />
+      <Posts posts={postsData} zenModeStatus={zenMode} />
       <Footer />
     </div>
   );

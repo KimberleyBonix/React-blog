@@ -4,13 +4,14 @@ import { PostProp } from '../../@Types/Post';
 
 type PostsProps = {
   posts: PostProp[];
+  zenModeStatus: boolean;
 };
 
-function Posts({ posts }: PostsProps) {
+function Posts({ posts, zenModeStatus }: PostsProps) {
   return (
     <main className="posts">
       <h1 className="posts-title">Dev Of Thrones</h1>
-      <div className="posts-list">
+      <div className={zenModeStatus ? 'posts-list zenmode' : 'posts-list'}>
         {posts.map((post) => (
           <Post key={post.id} post={post} />
         ))}
