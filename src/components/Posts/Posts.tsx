@@ -1,17 +1,16 @@
 import Post from '../Post/Post';
 import './Posts.scss';
-import { PostProp } from '../../@Types/Post';
+import { Post as TPost } from '../../@Types/Post';
 
 type PostsProps = {
-  posts: PostProp[];
-  zenModeStatus: boolean;
+  posts: TPost[];
 };
 
-function Posts({ posts, zenModeStatus }: PostsProps) {
+function Posts({ posts }: PostsProps) {
   return (
     <main className="posts">
       <h1 className="posts-title">Dev Of Thrones</h1>
-      <div className={zenModeStatus ? 'posts-list zenmode' : 'posts-list'}>
+      <div className="posts-list">
         {posts.map((post) => (
           <Post key={post.id} post={post} />
         ))}

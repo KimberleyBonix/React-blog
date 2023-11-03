@@ -19,6 +19,8 @@
     font-weight: v.$font-title-weight;
     margin-bottom: v.$gutter * 0.25;
     text-transform: uppercase;
+    display: block;
+    text-decoration: none;
   }
 
   &-category {

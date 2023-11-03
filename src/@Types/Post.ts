@@ -1,9 +1,11 @@
-export type PostProp = {
-  category: {
-    id: number;
-    slug: string;
-    name: string;
-  };
+export type Category = {
+  id: number;
+  slug: string;
+  name: string;
+};
+
+export type Post = {
+  category: Category;
   categoryId: number;
   content: string;
   excerpt: string;

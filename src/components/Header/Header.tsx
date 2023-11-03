@@ -1,11 +1,9 @@
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
+import { Category } from '../../@Types/Post';
 
 type HeaderProps = {
-  categories: {
-    id: number;
-    name: string;
-    slug: string;
-  }[];
+  categories: Category[];
   zenModeStatus: boolean;
   setZenMode: (status: boolean) => void;
 };
@@ -22,14 +20,26 @@ function Header({ categories, zenModeStatus, setZenMode }: HeaderProps) {
   return (
     <header className="menu" id="header">
       <nav className="menu-nav">
-        <a className="menu-link menu-link--selected" href="#header">
+        <NavLink
+          className={({ isActive }) =>
+            `menu-link ${isActive ? 'menu-link--selected' : ''}`
+          }
+          to="/"
+        >
           Accueil
-        </a>
+        </NavLink>
         {categories.map((category) => (
-          <a className="menu-link" href="#header" key={category.id}>
+          <NavLink
+            className={({ isActive }) =>
+              `menu-link ${isActive ? 'menu-link--selected' : ''}`
+            }
+            to={`/category/${category.slug}`}
+            key={category.id}
+          >
             {category.name}
-          </a>
+          </NavLink>
         ))}
+
         <button className="menu-btn" type="button" onClick={handleZenMoode}>
           {zenModeStatus ? 'Désactiver' : 'Activer'} le mode zen
         </button>

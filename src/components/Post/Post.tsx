@@ -1,14 +1,17 @@
+import { NavLink } from 'react-router-dom';
 import './Post.scss';
-import { PostProp } from '../../@Types/Post';
+import { Post as TPost } from '../../@Types/Post';
 
-type PoostProp = {
-  post: PostProp;
+type PostProp = {
+  post: TPost;
 };
 
-function Post({ post }: PoostProp) {
+function Post({ post }: PostProp) {
   return (
     <article className="post">
-      <h2 className="post-title">{post.title}</h2>
+      <NavLink to={`/article/${post.slug}`} className="post-title">
+        {post.title}
+      </NavLink>
       <div className="post-category">{post.category.name}</div>
       <p className="post-excerpt">{post.excerpt}</p>
     </article>
