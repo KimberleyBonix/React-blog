@@ -13,3 +13,5 @@ export type Post = {
   slug: string;
   title: string;
 };
+
+export type SinglePost = Omit<Post, 'category'>;

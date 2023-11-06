@@ -1,21 +1,31 @@
 import { useParams } from 'react-router-dom';
 import { useAsyncFetch } from '../../hooks/useAsyncFetch';
-import Post from '../../components/Post/Post';
 import Spinner from '../../components/Spinner/Spinner';
-import { Post as TPost } from '../../@Types/Post';
+import { SinglePost } from '../../@Types/Post';
 
 function Article() {
   const { slug } = useParams();
   if (!slug) throw new Error('Invalid slug');
 
-  const { apiData: post, loading } = useAsyncFetch<TPost>(
+  const {
+    apiData: post,
+    loading,
+    error,
+  } = useAsyncFetch<SinglePost>(
     `https://oblog-react.vercel.app/api/posts/${slug}`
   );
+
+  if (error) throw error;
 
   return (
     <main>
       {loading && <Spinner />}
-      {post && <Post post={post} />}
+      {post && (
+        <article>
+          <h1>{post.title}</h1>
+          <p>{post.content}</p>
+        </article>
+      )}
     </main>
   );
 }
