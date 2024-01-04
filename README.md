@@ -20,4 +20,4 @@ All this in a [Vite](https://vitejs.dev/) environment.
 1. install `pnpm i`
 2. try it `pnpm run dev`
 
-![demo](./assets/blog_demo.gif)
+![demo](./src/assets/blog_demo.gif)
