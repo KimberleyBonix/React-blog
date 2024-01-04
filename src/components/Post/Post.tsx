@@ -3,11 +3,13 @@ import DOMPurify from 'dompurify';
 import './Post.scss';
 import { Post as TPost } from '../../@Types/Post';
 
+// Post component types props
 type PostProp = {
   post: TPost;
 };
 
 function Post({ post }: PostProp) {
+  // We sanitize the the post content to prevent XSS attacks (like malicious functions)
   const purifiedHTML = DOMPurify.sanitize(post.excerpt);
 
   return (

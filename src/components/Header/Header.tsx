@@ -2,13 +2,15 @@ import { NavLink } from 'react-router-dom';
 import './Header.scss';
 import { Category } from '../../@Types/Post';
 
+// Header component types props
 type HeaderProps = {
   categories: Category[];
   zenModeStatus: boolean;
-  setZenMode: (status: boolean) => void;
+  setZenMode: (status: boolean) => void; // function type
 };
 
 function Header({ categories, zenModeStatus, setZenMode }: HeaderProps) {
+  // Toggle zenMode
   const handleZenMoode = () => {
     if (zenModeStatus) {
       setZenMode(false);
@@ -20,6 +22,8 @@ function Header({ categories, zenModeStatus, setZenMode }: HeaderProps) {
   return (
     <header className="menu" id="header">
       <nav className="menu-nav">
+        {/* Use of NavLink
+         ** https://reactrouter.com/en/main/components/nav-link */}
         <NavLink
           className={({ isActive }) =>
             `menu-link ${isActive ? 'menu-link--selected' : ''}`

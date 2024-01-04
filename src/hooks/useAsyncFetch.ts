@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { useEffect, useState } from 'react';
 
+// This is a custom hooks
+// It handles the fetch API and its reponses
 export const useAsyncFetch = <TData>(url: string) => {
   const [loading, setLoading] = useState(false);
   const [apiData, setApiData] = useState<TData>();

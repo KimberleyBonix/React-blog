@@ -4,9 +4,11 @@ import Spinner from '../../components/Spinner/Spinner';
 import { SinglePost } from '../../@Types/Post';
 
 function Article() {
+  // Get URL slug
   const { slug } = useParams();
   if (!slug) throw new Error('Invalid slug');
 
+  // Custom hook to fetch post with slug
   const {
     apiData: post,
     loading,

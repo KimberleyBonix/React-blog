@@ -7,8 +7,10 @@ import Header from '../../components/Header/Header';
 import './root.scss';
 
 function Root() {
+  // Handle zenmode status
   const [zenMode, setZenMode] = useState<boolean>(false);
 
+  // Fetch all categories
   const { apiData: categories } = useAsyncFetch<Category[]>(
     'https://oblog-react.vercel.app/api/categories'
   );
@@ -21,6 +23,7 @@ function Root() {
         zenModeStatus={zenMode}
       />
 
+      {/* Router child element */}
       <Outlet />
 
       <Footer />
